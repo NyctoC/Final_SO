@@ -20,27 +20,27 @@ SIRC es un sistema de respaldo inteligente que utiliza paralelización con Dask 
 - pip (gestor de paquetes de Python)
 
 ### Dependencias
-Las dependencias se instalan automáticamente desde \`requirements.txt\`:
+Las dependencias se instalan automáticamente desde `requirements.txt`:
 
-\`\`\`
+```
 dask[complete]
 cryptography
 tk
 pyzipper
 dropbox
 python-dotenv
-\`\`\`
+```
 
 ## Instalación
 
 ### 1. Clonar el repositorio
-\`\`\`bash
+```bash
 git clone <url-del-repositorio>
 cd sirc-backup-system
-\`\`\`
+```
 
 ### 2. Crear entorno virtual (recomendado)
-\`\`\`bash
+```bash
 python -m venv venv
 
 # En Windows
@@ -48,29 +48,29 @@ venv\\Scripts\\activate
 
 # En Linux/macOS
 source venv/bin/activate
-\`\`\`
+```
 
 ### 3. Instalar dependencias
-\`\`\`bash
+```bash
 pip install -r requirements.txt
-\`\`\`
+```
 
 ### 4. Configuración de Dropbox (opcional)
 Si deseas usar la integración con Dropbox:
 
 1. Crea una aplicación en [Dropbox App Console](https://www.dropbox.com/developers/apps)
 2. Obtén tu token de acceso
-3. Crea un archivo \`.env\` en el directorio raíz:
-\`\`\`
+3. Crea un archivo `.env` en el directorio raíz:
+```
 DROPBOX_TOKEN=tu_token_aqui
-\`\`\`
+```
 
 ## Uso
 
 ### Ejecutar la aplicación
-\`\`\`bash
+```bash
 python gui.py
-\`\`\`
+```
 
 ### Funcionalidades principales
 
@@ -84,32 +84,32 @@ python gui.py
 ### Uso programático
 
 #### Compresión básica
-\`\`\`python
+```python
 from compression_dask import compress_all_to_one
 
 paths = ['/ruta/archivo1.txt', '/ruta/carpeta1']
 compress_all_to_one(paths, 'respaldo.zip', 'zip')
-\`\`\`
+```
 
 #### Cifrado de archivos
-\`\`\`python
+```python
 from encryption_dask import encrypt_file_dask
 from dask import compute
 
 task = encrypt_file_dask('archivo.txt', 'archivo.enc', key, iv)
 compute(task)
-\`\`\`
+```
 
 ## Arquitectura del Sistema
 
 ### Módulos principales
 
-- **\`gui.py\`**: Interfaz gráfica principal
-- **\`compression_dask.py\`**: Compresión paralela con Dask
-- **\`encryption_dask.py\`**: Cifrado paralelo con Dask
-- **\`parallel_utils.py\`**: Utilidades para procesamiento paralelo
-- **\`compression.py\`**: Funciones de compresión básicas
-- **\`encryption.py\`**: Funciones de cifrado básicas
+- **`gui.py`**: Interfaz gráfica principal
+- **`compression_dask.py`**: Compresión paralela con Dask
+- **`encryption_dask.py`**: Cifrado paralelo con Dask
+- **`parallel_utils.py`**: Utilidades para procesamiento paralelo
+- **`compression.py`**: Funciones de compresión básicas
+- **`encryption.p`**: Funciones de cifrado básicas
 
 ### Flujo de trabajo
 
@@ -124,13 +124,13 @@ compute(task)
 ### Errores comunes
 
 1. **Error de importación de tkinter**:
-   \`\`\`bash
+   ```bash
    # Ubuntu/Debian
    sudo apt-get install python3-tk
    
    # CentOS/RHEL
    sudo yum install tkinter
-   \`\`\`
+   ```
 
 2. **Error de permisos**:
    - Asegúrate de tener permisos de lectura en los archivos fuente
@@ -138,23 +138,23 @@ compute(task)
 
 3. **Error de memoria**:
    - Para archivos muy grandes, considera aumentar la memoria disponible
-   - Ajusta el tamaño de bloque en \`BLOCK_SIZE\`
+   - Ajusta el tamaño de bloque en `BLOCK_SIZE`
 
 ### Logs y depuración
 
 El sistema utiliza el logging estándar de Python. Para habilitar logs detallados:
 
-\`\`\`python
+```python
 import logging
 logging.basicConfig(level=logging.DEBUG)
-\`\`\`
+```
 
 ## Contribución
 
 1. Fork el proyecto
-2. Crea una rama para tu feature (\`git checkout -b feature/nueva-funcionalidad\`)
-3. Commit tus cambios (\`git commit -am 'Agrega nueva funcionalidad'\`)
-4. Push a la rama (\`git push origin feature/nueva-funcionalidad\`)
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -am 'Agrega nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
 5. Crea un Pull Request
 
 ## Licencia
@@ -164,4 +164,3 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo LICENSE para más detal
 ## Soporte
 
 Para reportar bugs o solicitar nuevas funcionalidades, por favor crea un issue en el repositorio del proyecto.
-\`\`\`
