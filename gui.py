@@ -7,6 +7,12 @@ import os
 from compression_dask import compress_all_to_one
 from encryption_dask import encrypt_file_dask, decrypt_file_dask  # Asegúrate de tener esta función
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+DROPBOX_TOKEN = os.getenv("DROPBOX_TOKEN")
+
 class BackupApp:
     def __init__(self, root):
         self.root = root
@@ -101,7 +107,7 @@ class BackupApp:
             upload = messagebox.askyesno("Dropbox", "¿Quieres subir este backup a Dropbox?")
             if upload:
                 try:
-                    self.upload_to_dropbox(save_path, "/backups/" + os.path.basename(save_path), token="___")
+                    self.upload_to_dropbox(save_path, "/backups/" + os.path.basename(save_path), token=DROPBOX_TOKEN)
                     messagebox.showinfo("Dropbox", "Backup subido exitosamente.")
                 except Exception as e:
                     messagebox.showerror("Error al subir", str(e))

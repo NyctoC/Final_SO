@@ -2,3 +2,5 @@ dask[complete]
 cryptography
 tk
 pyzipper
+dropbox
+python-dotenv
